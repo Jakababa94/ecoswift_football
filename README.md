@@ -3,6 +3,8 @@
 ## Overview
 The **Ecoswift Football Platform** is a modern, web-based application designed to organize and promote eco-conscious football tournaments in East Africa. Built with a "Luxury & Green" aesthetic, it allows teams to register for tournaments, view schedules, and learn about the organization's mission to "Reduce, Reuse, Repower".
 
+**Live Demo:** [https://ecoswift-football.vercel.app/](https://ecoswift-football.vercel.app/)
+
 ## Tech Stack
 *   **Frontend**: React (Vite), TypeScript
 *   **Styling**: Tailwind CSS, Vanilla CSS (Glassmorphism effects)
