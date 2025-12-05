@@ -12,13 +12,41 @@ create table public.teams (
 -- Enable Row Level Security (RLS)
 alter table public.teams enable row level security;
 
--- Create a policy to allow anyone to insert valid data (Registration)
-create policy "Enable insert for everyone" on public.teams
-  for insert
-  with check (true);
+-- Policies for teams
+create policy "Enable insert for everyone" on public.teams for insert with check (true);
+create policy "Enable read access for all users" on public.teams for select using (true);
 
--- Create a policy to allow reading only your own data (Optional, for now maybe just public read or restricted)
--- For a tournament site, usually showing the list of registered teams is fine.
-create policy "Enable read access for all users" on public.teams
-  for select
-  using (true);
+-- --- PHASE 2 UPDATES ---
+
+-- Modify teams table
+alter table public.teams 
+add column if not exists captain_name text,
+add column if not exists players_count integer,
+add column if not exists payment_method text,
+add column if not exists payment_status text default 'pending',
+add column if not exists logo_url text;
+
+-- Create workshop_registrations table
+create table public.workshop_registrations (
+  id uuid default gen_random_uuid() primary key,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  name text not null,
+  email text not null,
+  phone text not null,
+  interests text[] -- Array of strings for interests e.g. ['AI', 'E-commerce']
+);
+
+-- RLS for workshops
+alter table public.workshop_registrations enable row level security;
+
+create policy "Enable insert for everyone" on public.workshop_registrations for insert with check (true);
+create policy "Enable read for all" on public.workshop_registrations for select using (true);
+
+-- Create sponsors table
+create table public.sponsors (
+  id uuid default gen_random_uuid() primary key,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  name text not null,
+  logo_url text not null,
+  website_url text
+);
