@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --color-gold: #D4AF37;
+  --color-neon-green: #39FF14;
+}
+
+body {
+  @apply bg-dark-bg text-white font-sans;
+  overflow-x: hidden;
+}
+
+/* Custom Component Classes */
+.btn-gold {
+  @apply bg-gradient-to-br from-gold via-[#F4E285] to-gold text-black font-bold py-3 px-8 uppercase tracking-widest rounded transition-transform shadow-lg shadow-gold/30 hover:-translate-y-0.5 hover:shadow-gold/50;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-2xl;
+}
+
+/* Text Utilities that match our custom vars if needed specifically */
+.text-shadow-green {
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}

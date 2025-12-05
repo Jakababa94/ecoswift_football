@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+14:48:17	46/46	---MCZ	200	added ('OK')	text/plain	etag:W/%2267c1c6bb-1a%22	https://demo.awaikenthemes.com/robots.txt		(from )
+14:48:21	615928/615928	---MCZ	200	added ('OK')	text/html	date:Fri,%2005%20Dec%202025%2011:48:18%20GMT	https://demo.awaikenthemes.com/landing/footclub-html/	C:/My%20Web%20Sites/Ecoswift%20Football/demo.awaikenthemes.com/landing/footclub-html/index.html	(from )
