@@ -9,199 +9,248 @@ export type Json =
 export interface Database {
     public: {
         Tables: {
-            teams: {
+            users: {
                 Row: {
                     id: string
-                    created_at: string
-                    team_name: string
-                    town: string
-                    contact_name: string
-                    contact_phone: string
-                    contact_email: string
-                    captain_name: string | null
-                    captain_id: string | null
-                    players_count: number | null
-                    payment_method: string | null
-                    payment_status: string | null
-                    logo_url: string | null
-                    website_url: string | null
+                    email: string
+                    name: string | null
+                    role: 'admin' | 'organiser' | 'volunteer' | 'viewer'
+                    created_at: string | null
                 }
                 Insert: {
                     id?: string
-                    created_at?: string
-                    team_name: string
-                    town: string
-                    contact_name: string
-                    contact_phone: string
-                    contact_email: string
-                    captain_name?: string | null
-                    players_count?: number | null
-                    payment_method?: string | null
-                    payment_status?: string | null
-                    logo_url?: string | null
-                    website_url?: string | null
+                    email: string
+                    name?: string | null
+                    role: 'admin' | 'organiser' | 'volunteer' | 'viewer'
+                    created_at?: string | null
                 }
                 Update: {
                     id?: string
-                    created_at?: string
-                    team_name?: string
-                    town?: string
-                    contact_name?: string
-                    contact_phone?: string
-                    contact_email?: string
-                    captain_name?: string | null
-                    players_count?: number | null
-                    payment_method?: string | null
-                    payment_status?: string | null
-                    logo_url?: string | null
-                    website_url?: string | null
+                    email?: string
+                    name?: string | null
+                    role?: 'admin' | 'organiser' | 'volunteer' | 'viewer'
+                    created_at?: string | null
                 }
                 Relationships: []
             }
-            players: {
+            teams: {
                 Row: {
                     id: string
-                    team_id: string
                     name: string
-                    position: string | null
-                    created_at: string
+                    captain_name: string
+                    captain_phone: string
+                    captain_email: string | null
+                    num_players: number | null
+                    logo_url: string | null
+                    registration_status: 'pending' | 'paid' | 'confirmed' | 'rejected' | null
+                    payment_id: string | null
+                    created_at: string | null
                 }
                 Insert: {
                     id?: string
-                    team_id: string
                     name: string
-                    position?: string | null
-                    created_at?: string
+                    captain_name: string
+                    captain_phone: string
+                    captain_email?: string | null
+                    num_players?: number | null
+                    logo_url?: string | null
+                    registration_status?: 'pending' | 'paid' | 'confirmed' | 'rejected' | null
+                    payment_id?: string | null
+                    created_at?: string | null
                 }
                 Update: {
                     id?: string
-                    team_id?: string
                     name?: string
-                    position?: string | null
-                    created_at?: string
+                    captain_name?: string
+                    captain_phone?: string
+                    captain_email?: string | null
+                    num_players?: number | null
+                    logo_url?: string | null
+                    registration_status?: 'pending' | 'paid' | 'confirmed' | 'rejected' | null
+                    payment_id?: string | null
+                    created_at?: string | null
                 }
-                Relationships: [
-                    {
-                        foreignKeyName: "players_team_id_fkey"
-                        columns: ["team_id"]
-                        isOneToOne: false
-                        referencedRelation: "teams"
-                        referencedColumns: ["id"]
-                    }
-                ]
+                Relationships: []
+            }
+            payments: {
+                Row: {
+                    id: string
+                    payment_ref: string | null
+                    method: 'mpesa' | 'paypal' | 'card' | null
+                    amount: number
+                    status: 'initiated' | 'success' | 'failed' | 'pending' | null
+                    raw_payload: Json | null
+                    created_at: string | null
+                }
+                Insert: {
+                    id?: string
+                    payment_ref?: string | null
+                    method?: 'mpesa' | 'paypal' | 'card' | null
+                    amount: number
+                    status?: 'initiated' | 'success' | 'failed' | 'pending' | null
+                    raw_payload?: Json | null
+                    created_at?: string | null
+                }
+                Update: {
+                    id?: string
+                    payment_ref?: string | null
+                    method?: 'mpesa' | 'paypal' | 'card' | null
+                    amount?: number
+                    status?: 'initiated' | 'success' | 'failed' | 'pending' | null
+                    raw_payload?: Json | null
+                    created_at?: string | null
+                }
+                Relationships: []
             }
             fixtures: {
                 Row: {
                     id: string
-                    team_a_id: string | null
-                    team_b_id: string | null
-                    match_date: string
-                    venue: string
+                    date: string
+                    time: string | null
+                    venue: string | null
+                    team_a: string | null
+                    team_b: string | null
+                    status: 'scheduled' | 'playing' | 'finished' | 'postponed' | null
                     score_a: number | null
                     score_b: number | null
-                    status: 'Upcoming' | 'Live' | 'Finished'
-                    created_at: string
+                    created_by: string | null
+                    created_at: string | null
                 }
                 Insert: {
                     id?: string
-                    team_a_id?: string | null
-                    team_b_id?: string | null
-                    match_date: string
-                    venue: string
+                    date: string
+                    time?: string | null
+                    venue?: string | null
+                    team_a?: string | null
+                    team_b?: string | null
+                    status?: 'scheduled' | 'playing' | 'finished' | 'postponed' | null
                     score_a?: number | null
                     score_b?: number | null
-                    status?: 'Upcoming' | 'Live' | 'Finished'
-                    created_at?: string
+                    created_by?: string | null
+                    created_at?: string | null
                 }
                 Update: {
                     id?: string
-                    team_a_id?: string | null
-                    team_b_id?: string | null
-                    match_date?: string
-                    venue?: string
+                    date?: string
+                    time?: string | null
+                    venue?: string | null
+                    team_a?: string | null
+                    team_b?: string | null
+                    status?: 'scheduled' | 'playing' | 'finished' | 'postponed' | null
                     score_a?: number | null
                     score_b?: number | null
-                    status?: 'Upcoming' | 'Live' | 'Finished'
-                    created_at?: string
+                    created_by?: string | null
+                    created_at?: string | null
                 }
                 Relationships: [
                     {
-                        foreignKeyName: "fixtures_team_a_id_fkey"
-                        columns: ["team_a_id"]
+                        foreignKeyName: "fixtures_team_a_fkey"
+                        columns: ["team_a"]
                         isOneToOne: false
                         referencedRelation: "teams"
                         referencedColumns: ["id"]
                     },
                     {
-                        foreignKeyName: "fixtures_team_b_id_fkey"
-                        columns: ["team_b_id"]
+                        foreignKeyName: "fixtures_team_b_fkey"
+                        columns: ["team_b"]
                         isOneToOne: false
                         referencedRelation: "teams"
+                        referencedColumns: ["id"]
+                    },
+                    {
+                        foreignKeyName: "fixtures_created_by_fkey"
+                        columns: ["created_by"]
+                        isOneToOne: false
+                        referencedRelation: "users"
                         referencedColumns: ["id"]
                     }
                 ]
             }
-            workshops: {
+            workshop_signups: {
                 Row: {
                     id: string
-                    title: string
-                    category: string
-                    resource_url: string | null
-                    registered_users: Json
-                    created_at: string
+                    name: string
+                    phone: string
+                    email: string | null
+                    interests: string[] | null
+                    created_at: string | null
                 }
                 Insert: {
                     id?: string
-                    title: string
-                    category: string
-                    resource_url?: string | null
-                    registered_users?: Json
-                    created_at?: string
+                    name: string
+                    phone: string
+                    email?: string | null
+                    interests?: string[] | null
+                    created_at?: string | null
                 }
                 Update: {
                     id?: string
-                    title?: string
-                    category?: string
-                    resource_url?: string | null
-                    registered_users?: Json
-                    created_at?: string
+                    name?: string
+                    phone?: string
+                    email?: string | null
+                    interests?: string[] | null
+                    created_at?: string | null
                 }
                 Relationships: []
             }
-            transactions: {
+            sponsors: {
                 Row: {
                     id: string
-                    team_id: string | null
-                    amount: number
-                    provider: 'M-Pesa' | 'PayPal' | 'Stripe'
-                    transaction_code: string
-                    status: string
-                    created_at: string
+                    name: string | null
+                    logo_url: string | null
+                    level: string | null
+                    created_at: string | null
                 }
                 Insert: {
                     id?: string
-                    team_id?: string | null
-                    amount: number
-                    provider: 'M-Pesa' | 'PayPal' | 'Stripe'
-                    transaction_code: string
-                    status?: string
-                    created_at?: string
+                    name?: string | null
+                    logo_url?: string | null
+                    level?: string | null
+                    created_at?: string | null
                 }
                 Update: {
                     id?: string
-                    team_id?: string | null
-                    amount?: number
-                    provider?: 'M-Pesa' | 'PayPal' | 'Stripe'
-                    transaction_code?: string
-                    status?: string
-                    created_at?: string
+                    name?: string | null
+                    logo_url?: string | null
+                    level?: string | null
+                    created_at?: string | null
+                }
+                Relationships: []
+            }
+            audit_logs: {
+                Row: {
+                    id: string
+                    actor: string | null
+                    action: string | null
+                    resource_type: string | null
+                    resource_id: string | null
+                    details: Json | null
+                    created_at: string | null
+                }
+                Insert: {
+                    id?: string
+                    actor?: string | null
+                    action?: string | null
+                    resource_type?: string | null
+                    resource_id?: string | null
+                    details?: Json | null
+                    created_at?: string | null
+                }
+                Update: {
+                    id?: string
+                    actor?: string | null
+                    action?: string | null
+                    resource_type?: string | null
+                    resource_id?: string | null
+                    details?: Json | null
+                    created_at?: string | null
                 }
                 Relationships: [
                     {
-                        foreignKeyName: "transactions_team_id_fkey"
-                        columns: ["team_id"]
+                        foreignKeyName: "audit_logs_actor_fkey"
+                        columns: ["actor"]
                         isOneToOne: false
-                        referencedRelation: "teams"
+                        referencedRelation: "users"
                         referencedColumns: ["id"]
                     }
                 ]

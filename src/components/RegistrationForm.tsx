@@ -5,11 +5,11 @@ import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
-        team_name: '',
-        town: '',
-        contact_name: '',
-        contact_phone: '',
-        contact_email: ''
+        name: '',
+        captain_name: '',
+        captain_phone: '',
+        captain_email: '',
+        num_players: ''
     });
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -28,17 +28,23 @@ const RegistrationForm = () => {
         try {
             const { error } = await supabase
                 .from('teams')
-                .insert([formData]);
+                .insert([{
+                    name: formData.name,
+                    captain_name: formData.captain_name,
+                    captain_phone: formData.captain_phone,
+                    captain_email: formData.captain_email,
+                    num_players: formData.num_players ? parseInt(formData.num_players) : null
+                }]);
 
             if (error) throw error;
 
             setStatus('success');
             setFormData({
-                team_name: '',
-                town: '',
-                contact_name: '',
-                contact_phone: '',
-                contact_email: ''
+                name: '',
+                captain_name: '',
+                captain_phone: '',
+                captain_email: '',
+                num_players: ''
             });
         } catch (error: any) {
             console.error('Error registering team:', error);
@@ -77,34 +83,36 @@ const RegistrationForm = () => {
                                 <input
                                     required
                                     type="text"
-                                    name="team_name"
-                                    value={formData.team_name}
+                                    name="name"
+                                    value={formData.name}
                                     onChange={handleChange}
                                     className="w-full bg-black/50 border border-white/20 rounded px-4 py-3 text-white focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
                                     placeholder="e.g. Nairobi Stars"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Town/City</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Number of Players</label>
                                 <input
                                     required
-                                    type="text"
-                                    name="town"
-                                    value={formData.town}
+                                    type="number"
+                                    min="7"
+                                    max="30"
+                                    name="num_players"
+                                    value={formData.num_players}
                                     onChange={handleChange}
                                     className="w-full bg-black/50 border border-white/20 rounded px-4 py-3 text-white focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
-                                    placeholder="e.g. Mombasa"
+                                    placeholder="Min 7, Max 30"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Contact Person Name</label>
+                            <label className="block text-sm font-medium text-gray-300 mb-1">Captain's Name</label>
                             <input
                                 required
                                 type="text"
-                                name="contact_name"
-                                value={formData.contact_name}
+                                name="captain_name"
+                                value={formData.captain_name}
                                 onChange={handleChange}
                                 className="w-full bg-black/50 border border-white/20 rounded px-4 py-3 text-white focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
                                 placeholder="Full Name"
@@ -113,27 +121,27 @@ const RegistrationForm = () => {
 
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Captain's Phone</label>
                                 <input
                                     required
                                     type="tel"
-                                    name="contact_phone"
-                                    value={formData.contact_phone}
+                                    name="captain_phone"
+                                    value={formData.captain_phone}
                                     onChange={handleChange}
                                     className="w-full bg-black/50 border border-white/20 rounded px-4 py-3 text-white focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
                                     placeholder="+254..."
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Captain's Email</label>
                                 <input
                                     required
                                     type="email"
-                                    name="contact_email"
-                                    value={formData.contact_email}
+                                    name="captain_email"
+                                    value={formData.captain_email}
                                     onChange={handleChange}
                                     className="w-full bg-black/50 border border-white/20 rounded px-4 py-3 text-white focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
-                                    placeholder="email@example.com"
+                                    placeholder="captain@example.com"
                                 />
                             </div>
                         </div>
