@@ -1,7 +1,7 @@
 
 const FAQ = () => {
     const faqs = [
-        { q: "How much is the registration fee?", a: "The registration fee is KSH 5,000 per team." },
+        { q: "How much is the registration fee?", a: "The registration fee is KSH 2,500 per team." },
         { q: "What is the age limit?", a: "The tournament is open to youth aged 16-25." },
         { q: "Are the workshops mandatory?", a: "While not mandatory, they are highly recommended as they provide valuable skills for future careers." },
         { q: "How do I pay?", a: "You can pay via M-Pesa or PayPal during the registration process." },
