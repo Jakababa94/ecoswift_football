@@ -255,6 +255,39 @@ export interface Database {
                     }
                 ]
             }
+            skills_modules: {
+                Row: {
+                    id: string
+                    title: string
+                    description: string | null
+                    video_url: string | null
+                    content: string | null
+                    published: boolean | null
+                    order_index: number | null
+                    created_at: string | null
+                }
+                Insert: {
+                    id?: string
+                    title: string
+                    description?: string | null
+                    video_url?: string | null
+                    content?: string | null
+                    published?: boolean | null
+                    order_index?: number | null
+                    created_at?: string | null
+                }
+                Update: {
+                    id?: string
+                    title?: string
+                    description?: string | null
+                    video_url?: string | null
+                    content?: string | null
+                    published?: boolean | null
+                    order_index?: number | null
+                    created_at?: string | null
+                }
+                Relationships: []
+            }
         }
         Views: {
             [_ in never]: never

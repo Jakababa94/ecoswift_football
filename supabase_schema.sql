@@ -76,3 +76,15 @@ CREATE TABLE audit_logs (
   details jsonb,
   created_at timestamptz DEFAULT now()
 );
+
+-- skills_modules (dynamic content)
+CREATE TABLE skills_modules (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text NOT NULL,
+  description text,
+  video_url text, -- youtube embed url
+  content text, -- markdown content
+  published boolean DEFAULT false,
+  order_index int DEFAULT 0,
+  created_at timestamptz DEFAULT now()
+);
