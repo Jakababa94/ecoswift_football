@@ -37,12 +37,17 @@ const Navbar = () => {
                             <NavLink to="/sponsors">Sponsors</NavLink>
                             <NavLink to="/faq">FAQ</NavLink>
                             <NavLink to="/contact">Contact</NavLink>
-                            <Link to="/register" className="btn-gold text-xs px-6 py-3 ml-2">Register Team</Link>
+                            <Link to="/register" className="btn-gold text-xs px-6 py-3 ml-2 focus:ring-2 focus:ring-white">Register Team</Link>
                         </div>
                     </div>
 
                     <div className="lg:hidden">
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-gold p-2">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-white hover:text-gold p-2 focus:outline-none focus:ring-2 focus:ring-gold rounded"
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            aria-expanded={isOpen}
+                        >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>

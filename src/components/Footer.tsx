@@ -4,37 +4,37 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-green text-black py-8 px-10 border-t border-white/10">
+        <footer className="bg-black text-white py-8 px-10 border-t border-white/10">
             <div className="section-container">
                 <div className="grid md:grid-cols-4 gap-8 mb-8">
                     <div>
-                        <h3 className="text-black text-lg font-bold mb-4">ECO<span className="text-black">SWIFT</span></h3>
+                        <h3 className="text-white text-lg font-bold mb-4">ECO<span className="text-white">SWIFT</span></h3>
                         <p className="text-sm">
                             Empowering youth through Football, E-commerce, and AI skills. Building a sustainable future together.
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="text-black font-bold mb-4">Quick Links</h4>
+                        <h4 className="text-white font-bold mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/about" className="hover:text-gold">About Us</Link></li>
-                            <li><Link to="/schedule" className="hover:text-gold">Schedule</Link></li>
-                            <li><Link to="/skills" className="hover:text-gold">Skills Hub</Link></li>
-                            <li><Link to="/sponsors" className="hover:text-gold">Sponsors</Link></li>
+                            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
+                            <li><Link to="/schedule" className="hover:text-white">Schedule</Link></li>
+                            <li><Link to="/skills" className="hover:text-white">Skills Hub</Link></li>
+                            <li><Link to="/sponsors" className="hover:text-white">Sponsors</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="text-black font-bold mb-4">Legal</h4>
+                        <h4 className="text-white font-bold mb-4">Legal</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-gold">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-gold">Terms & Conditions</a></li>
-                            <li><a href="#" className="hover:text-gold">Cookie Policy</a></li>
+                            <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" className="hover:text-white">Terms & Conditions</a></li>
+                            <li><a href="#" className="hover:text-white">Cookie Policy</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="text-black font-bold mb-4">Connect</h4>
+                        <h4 className="text-white font-bold mb-4">Connect</h4>
                         <div className="flex space-x-4">
                             <a href="#" className="hover:text-white"><Facebook size={20} /></a>
                             <a href="#" className="hover:text-white"><Twitter size={20} /></a>
