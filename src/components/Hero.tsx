@@ -83,13 +83,13 @@ const Hero = () => {
           className="w-full h-full object-cover animate-pulse-slow"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-black/70 to-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-black/50 to-black/30 z-10"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-16 w-full">
+      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-32 w-full">
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-tight drop-shadow-2xl">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-tight drop-shadow-2xl pt-16">
           THE FUTURE IS <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">
             LUXURY
