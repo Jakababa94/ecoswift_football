@@ -30,7 +30,7 @@ const Mission = () => {
       </div>
       <div className="glass-card text-center relative overflow-hidden min-h-[260px]">
         <img
-          src="https://i.pinimg.com/736x/93/f9/9f/93f99fcd9e7af122ba29e886162d9dcd.jpg"
+          src="/images/mission-bg.jpg"
           alt="Global expansion - crowd and stadium background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           loading="lazy"

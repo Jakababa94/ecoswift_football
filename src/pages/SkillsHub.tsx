@@ -167,7 +167,7 @@ const SkillsHub = () => {
       <div className="relative mb-12">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://i.pinimg.com/736x/55/8d/01/558d0109a45da80678fa254383f63dab.jpg"
+            src="/images/skills-header.jpg"
             alt="Audience at a skills event / learning background"
             className="w-full h-full object-cover"
             loading="eager"

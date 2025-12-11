@@ -78,7 +78,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://i.pinimg.com/736x/6b/03/fb/6b03fb88fb5c044c0b22df7b12f6f9d1.jpg"
+          src="/images/hero.jpg"
           alt="Panoramic view of a modern luxury football stadium at night"
           className="w-full h-full object-cover animate-pulse-slow"
           loading="eager"
