@@ -74,7 +74,7 @@ const Hero = () => {
   }, [stats.kickoffDate]);
 
   return (
-    <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[640px] flex items-center justify-center overflow-visible">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -87,15 +87,15 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-32 w-full">
+      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-20 w-full">
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-tight drop-shadow-2xl pt-16">
-          THE FUTURE IS <br />
+        <h2 className="text-2xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-tight drop-shadow-1xl pt-8">
+          THE FUTURE OF FOOTBALL IS <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">
             LUXURY
           </span>{" "}
           & <span className="text-green-400">GREEN</span>
-        </h1>
+        </h2>
 
         <p className="text-xl md:text-2xl text-gray-200 mb-10 font-light tracking-wide max-w-3xl mx-auto">
           East Africa's Premium Tournament. Uniting Talent.{" "}
@@ -148,7 +148,7 @@ const Hero = () => {
         </div>
 
         {/* Live Stats Bar */}
-        <div className="border-t border-white/10 pt-8 mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="border-t border-white/10 pt-4 mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div className="flex flex-col items-center">
             <Users className="text-gold mb-2" size={32} />
             <span className="text-3xl font-bold text-white">{stats.teams}</span>
