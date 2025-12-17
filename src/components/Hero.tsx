@@ -73,16 +73,36 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, [stats.kickoffDate]);
 
+  const heroImages = [
+    "/images/assets/hero.jpg",
+    "/images/assets/green-goal.jpg",
+    "/images/assets/eco-strike.jpg",
+    "/images/assets/poster.jpg",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[640px] flex items-center justify-center overflow-visible">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero.jpg"
-          alt="Panoramic view of a modern luxury football stadium at night"
-          className="w-full h-full object-cover animate-pulse-slow"
-          loading="eager"
-        />
+      <div className="absolute inset-0 z-0 bg-black">
+        {heroImages.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Hero slide ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-black/50 to-black/30 z-10"></div>
       </div>
 
